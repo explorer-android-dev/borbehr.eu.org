@@ -4,551 +4,65 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BORBEHR — FUTURE IS HERE</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Вениамин | borBeHR — разработчик, контент-мейкер, креатив. Специализируюсь на C#, Python, JavaScript. Создаю инновационные проекты и контент.">
+  <meta name="keywords" content="borBeHR, Вениамин, разработчик, программист, C#, Python, JavaScript, контент, креатив, GitHub">
+  <meta name="author" content="Вениамин | borBeHR">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#050505">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.borbehr.work.gd/">
+  <meta property="og:title" content="BORBEHR — FUTURE IS HERE">
+  <meta property="og:description" content="Вениамин | borBeHR — разработчик, контент-мейкер, креатив. Специализируюсь на C#, Python, JavaScript.">
+  <meta property="og:image" content="https://cdn.discordapp.com/avatars/1472288918496870503/421e25be976509128490c2b36ee3ef97.png">
+  <meta property="og:image:alt" content="borBeHR Avatar">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.borbehr.work.gd/">
+  <meta property="twitter:title" content="BORBEHR — FUTURE IS HERE">
+  <meta property="twitter:description" content="Вениамин | borBeHR — разработчик, контент-мейкер, креатив. Специализируюсь на C#, Python, JavaScript.">
+  <meta property="twitter:image" content="https://cdn.discordapp.com/avatars/1472288918496870503/421e25be976509128490c2b36ee3ef97.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.borbehr.work.gd/">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Вениамин | borBeHR",
+    "alternateName": "borBeHR",
+    "url": "https://www.borbehr.work.gd/",
+    "image": "https://cdn.discordapp.com/avatars/1472288918496870503/421e25be976509128490c2b36ee3ef97.png",
+    "description": "Разработчик, контент-мейкер, креатив. Специализируюсь на C#, Python, JavaScript.",
+    "knowsAbout": ["C#", "Python", "JavaScript", "Web Development", "Content Creation"],
+    "sameAs": [
+      "https://github.com/borBeHR",
+      "https://t.me/borBeHR",
+      "https://discord.com/users/borbehr",
+      "https://www.youtube.com/@borBeHR",
+      "https://vk.com/veniamingress",
+      "https://guns.lol/borbehr"
+    ],
+    "jobTitle": "Full Stack Developer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Independent"
+    }
+  }
+  </script>
+  
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Fonts: Outfit -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    /* ===== сброс и переменные ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background-color: #050505;
-      color: #ffffff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* mesh gradient фон */
-    .mesh-gradient {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 40%);
-      z-index: -1;
-    }
-
-    /* ===== PRELOADER ===== */
-    .preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #050505;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-      opacity: 1;
-      visibility: visible;
-    }
-    .preloader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .preloader-content {
-      text-align: center;
-    }
-    .preloader-logo {
-      width: 150px;
-      height: 150px;
-      margin: 0 auto;
-      animation: pulseGlow 1.8s infinite ease-in-out;
-      filter: drop-shadow(0 0 20px #3b82f6);
-    }
-    .preloader-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      display: block;
-      background: rgba(255,255,255,0.03);
-      border: 4px solid rgba(255,255,255,0.05);
-    }
-    .preloader-text {
-      margin-top: 1rem;
-      font-size: 1.3rem;
-      font-weight: 300;
-      letter-spacing: 2px;
-      color: #aaa;
-      text-transform: uppercase;
-    }
-    .preloader-subtext {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 0.3rem;
-      letter-spacing: 1px;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); opacity: 0.9; filter: drop-shadow(0 0 10px #3b82f6); }
-      50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 30px #3b82f6); }
-    }
-
-    /* ===== боковое меню (расширенное) ===== */
-    .side-menu {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 20px;
-      width: 70px;
-      background: rgba(20, 20, 20, 0.7);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 40px;
-      padding: 1.2rem 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      z-index: 100;
-      transition: 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      max-height: 80vh;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #3b82f6 #1a1a1a;
-    }
-    .side-menu::-webkit-scrollbar {
-      width: 5px;
-    }
-    .side-menu::-webkit-scrollbar-track {
-      background: #1a1a1a;
-      border-radius: 10px;
-    }
-    .side-menu::-webkit-scrollbar-thumb {
-      background: #3b82f6;
-      border-radius: 10px;
-    }
-    .side-menu:hover {
-      border-color: rgba(59,130,246,0.3);
-      background: rgba(25,25,25,0.8);
-    }
-    .menu-item {
-      color: #aaa;
-      font-size: 1.5rem;
-      transition: 0.2s;
-      cursor: pointer;
-      position: relative;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .menu-item:hover {
-      color: #3b82f6;
-      transform: scale(1.15);
-    }
-    .menu-item[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      left: 60px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #1a1a1a;
-      padding: 0.4rem 1rem;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-      border: 1px solid #3b82f6;
-      color: #fff;
-      letter-spacing: 1px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      z-index: 200;
-    }
-    /* адаптация для мобильных: меню горизонтальное внизу */
-    @media (max-width: 900px) {
-      .side-menu {
-        top: auto;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        flex-direction: row;
-        width: auto;
-        max-width: 95vw;
-        padding: 0.8rem 1.2rem;
-        gap: 1.2rem;
-        border-radius: 50px;
-        backdrop-filter: blur(20px);
-        overflow-x: auto;
-        white-space: nowrap;
-        max-height: none;
-        justify-content: flex-start;
-      }
-      .menu-item[data-tooltip]:hover::after {
-        left: 50%;
-        top: -35px;
-        transform: translateX(-50%);
-      }
-    }
-    /* адаптация для совсем маленьких */
-    @media (max-width: 500px) {
-      .side-menu {
-        gap: 1rem;
-        padding: 0.6rem 1rem;
-      }
-      .menu-item {
-        font-size: 1.2rem;
-      }
-    }
-
-    /* основной контейнер сдвинут, чтобы не перекрываться меню */
-    .main-wrapper {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      padding: 1.5rem 1.5rem 1.5rem 100px;
-      transition: padding 0.3s;
-    }
-    @media (max-width: 900px) {
-      .main-wrapper {
-        padding: 1.5rem 1.5rem 80px 1.5rem;
-      }
-    }
-    .container {
-      max-width: 1200px;
-      width: 100%;
-    }
-
-    /* hero-карточка */
-    .hero-card {
-      background: linear-gradient(145deg, rgba(20,20,20,0.8), rgba(5,5,5,0.8));
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 40px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-card .glow {
-      position: absolute;
-      top: -6rem;
-      left: -6rem;
-      width: 20rem;
-      height: 20rem;
-      background: rgba(59, 130, 246, 0.1);
-      border-radius: 50%;
-      filter: blur(100px);
-    }
-
-    .avatar {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 1.8rem;
-      background: rgba(255,255,255,0.03);
-      border: 4px solid rgba(255,255,255,0.05);
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
-      animation: float 6s ease-in-out infinite;
-    }
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      background: linear-gradient(to bottom, #fff, #aaa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 0.5rem;
-      line-height: 1.1;
-    }
-
-    .subhead {
-      font-size: 1.2rem;
-      color: #aaa;
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.8rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 1rem 2rem;
-      border-radius: 1rem;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.02);
-      backdrop-filter: blur(12px);
-      color: white;
-    }
-
-    .btn-primary {
-      background: #2563eb;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      background: #3b82f6;
-      box-shadow: 0 0 25px rgba(59,130,246,0.4);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(59,130,246,0.5);
-      transform: translateY(-2px);
-    }
-
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .bento-item {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 24px;
-      padding: 1.5rem;
-      transition: 0.3s cubic-bezier(0.4,0,0.2,1);
-      text-decoration: none;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .bento-item:hover {
-      border-color: rgba(59,130,246,0.4);
-      background: rgba(255,255,255,0.04);
-      transform: scale(1.02);
-    }
-
-    .bento-icon {
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
-      color: #3b82f6;
-    }
-
-    .bento-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #666;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    .bento-value {
-      font-size: 1.2rem;
-      font-weight: 600;
-      word-break: break-word;
-    }
-
-    .skills-container {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 24px;
-      padding: 1.8rem;
-      margin-top: 2rem;
-    }
-
-    .skills-title {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-
-    .skill-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .skill-name {
-      min-width: 100px;
-      font-weight: 500;
-      color: #ccc;
-    }
-
-    .skill-bar-bg {
-      flex: 1;
-      height: 8px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .skill-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-      border-radius: 20px;
-      width: 0%;
-      box-shadow: 0 0 10px #3b82f6;
-    }
-
-    .skill-percent {
-      min-width: 45px;
-      text-align: right;
-      color: #aaa;
-      font-weight: 300;
-    }
-
-    /* заголовок проектов с кнопкой обновления */
-    .projects-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .projects-header-left {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .refresh-btn {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #aaa;
-      padding: 0.6rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .refresh-btn:hover {
-      background: rgba(59,130,246,0.2);
-      border-color: #3b82f6;
-      color: white;
-    }
-    .refresh-btn i {
-      font-size: 1rem;
-    }
-
-    .repo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .repo-card {
-      background: rgba(20,20,20,0.6);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 20px;
-      padding: 1.3rem;
-      backdrop-filter: blur(10px);
-      transition: 0.2s;
-      border-left: 4px solid #3b82f6;
-    }
-
-    .repo-card:hover {
-      background: rgba(30,30,30,0.8);
-      border-color: rgba(59,130,246,0.4);
-      transform: translateY(-4px);
-    }
-
-    .repo-name {
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .repo-name a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .repo-name a:hover {
-      color: #3b82f6;
-    }
-
-    .repo-desc {
-      color: #999;
-      font-size: 0.9rem;
-      margin-bottom: 0.8rem;
-      line-height: 1.4;
-    }
-
-    .repo-meta {
-      display: flex;
-      gap: 1.2rem;
-      font-size: 0.85rem;
-      color: #777;
-    }
-
-    .repo-meta i {
-      margin-right: 0.2rem;
-    }
-
-    .status-message {
-      background: rgba(255,255,255,0.03);
-      border-radius: 20px;
-      padding: 1.5rem;
-      text-align: center;
-      color: #aaa;
-    }
-
-    .footer {
-      margin-top: 3rem;
-      text-align: center;
-      color: #444;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2.5rem; }
-      .avatar { width: 90px; height: 90px; }
-      .btn { padding: 0.8rem 1.5rem; }
-      .preloader-logo { width: 100px; height: 100px; }
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- PRELOADER (виден минимум 5 секунд) -->
@@ -570,6 +84,10 @@
     <a href="#projects" class="menu-item" data-tooltip="Проекты"><i class="fas fa-code-branch"></i></a>
     <a href="#skills" class="menu-item" data-tooltip="Навыки"><i class="fas fa-crown"></i></a>
     <a href="#contacts" class="menu-item" data-tooltip="Контакты"><i class="fas fa-address-card"></i></a>
+    <!-- Переключатель темы -->
+    <div class="theme-toggle" id="theme-toggle" data-tooltip="Переключить тему">
+      <i class="fas fa-moon" id="theme-icon"></i>
+    </div>
     <!-- Добавленные пункты -->
     <a href="https://t.me/borBeHR" target="_blank" class="menu-item" data-tooltip="Telegram"><i class="fab fa-telegram"></i></a>
     <a href="https://discord.com/users/borbehr" target="_blank" class="menu-item" data-tooltip="Discord"><i class="fab fa-discord"></i></a>
@@ -734,78 +252,7 @@
     </div>
   </div>
 
-  <script>
-    (function() {
-      const container = document.getElementById('repos-container');
-      const username = 'borBeHR';
-      const preloader = document.getElementById('preloader');
-
-      // Функция загрузки репозиториев (возвращает промис)
-      async function fetchRepos() {
-        try {
-          const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=20`);
-          if (!response.ok) throw new Error(`GitHub API: ${response.status}`);
-          const repos = await response.json();
-
-          if (!repos.length) {
-            container.innerHTML = '<div class="status-message">📭 Публичных репозиториев пока нет</div>';
-          } else {
-            repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-            const cards = repos.map(repo => {
-              const desc = repo.description || '—';
-              const updated = new Date(repo.updated_at).toLocaleDateString('ru-RU', { month: 'short', day: 'numeric', year: 'numeric' });
-              return `
-                <div class="repo-card">
-                  <div class="repo-name">
-                    <a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
-                  </div>
-                  <div class="repo-desc">${desc}</div>
-                  <div class="repo-meta">
-                    <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
-                    <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
-                    <span><i class="far fa-calendar-alt"></i> ${updated}</span>
-                  </div>
-                </div>
-              `;
-            }).join('');
-            container.innerHTML = cards;
-          }
-        } catch (err) {
-          container.innerHTML = `<div class="status-message" style="color: #f87171;">❌ Ошибка загрузки: ${err.message}</div>`;
-        }
-      }
-
-      // Таймер на 5 секунд
-      const timerPromise = new Promise(resolve => setTimeout(resolve, 5000));
-
-      // Первоначальная загрузка + таймер
-      Promise.all([fetchRepos(), timerPromise]).then(() => {
-        if (preloader) preloader.classList.add('hidden');
-      });
-
-      // Кнопка обновления (без перезагрузки страницы)
-      document.getElementById('refresh-repos').addEventListener('click', function(e) {
-        e.preventDefault();
-        container.innerHTML = '<div class="status-message"><i class="fas fa-spinner fa-pulse"></i> Обновление...</div>';
-        fetchRepos();
-      });
-
-      // Плавный скролл для якорей меню
-      document.querySelectorAll('.menu-item[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            return;
-          }
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
-    })();
-  </script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
